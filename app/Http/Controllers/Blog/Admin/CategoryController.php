@@ -6,6 +6,7 @@ use App\Http\Requests\BlogCategoryCreateRequest;
 use App\Http\Requests\BlogCategoryUpdateRequest;
 use App\Models\BlogCategory;
 use App\Repositories\BlogCategoryRepository;
+use Str;
 
 /**
  * Class CategoryController
@@ -65,7 +66,7 @@ class CategoryController extends BaseController
         $data = $request->input();
 
         if (empty($data['slug'])) {
-            $data['slug'] = str_slug($data['title']);
+            $data['slug'] = Str::slug($data['title']);
         }
 
         //$item = new BlogCategory($data);
@@ -131,7 +132,7 @@ class CategoryController extends BaseController
         $data = $request->all();
 
         if (empty($data['slug'])) {
-            $data['slug'] = str_slug($data['title']);
+            $data['slug'] = Str::slug($data['title']);
         }
 
         //$result = $item->fill($data)->save();

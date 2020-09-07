@@ -20,7 +20,7 @@ class BlogCategoriesTableSeeder extends Seeder
 
         $categories[] = [
             'title'      => $name,
-            'slug'       => str_slug($name),
+            'slug'       => Str::slug($name),
             'parent_id'  => 0,
             'created_at' => $dataTime,
             'updated_at' => $dataTime,
@@ -33,7 +33,7 @@ class BlogCategoriesTableSeeder extends Seeder
 
             $categories[] = [
                 'title'     => $name,
-                'slug'      => str_slug($name),
+                'slug'      => Str::slug($name),
                 'parent_id' => $parentId,
                 'created_at' => $dataTime,
                 'updated_at' => $dataTime,
