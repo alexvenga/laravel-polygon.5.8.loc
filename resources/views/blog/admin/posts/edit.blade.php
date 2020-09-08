@@ -3,7 +3,6 @@
 @section('content')
     @php /** @var \App\Models\BlogPost $item */ @endphp
 
-        @csrf
         <div class="container">
             @php /** @var \Illuminate\Support\ViewErrorBag $errors */ @endphp
 
@@ -17,6 +16,9 @@
                 @else
                 <form method="POST" action="{{ route('blog.admin.posts.store') }}">
             @endif
+
+                    @csrf
+
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                             @include('blog.admin.posts.includes.item_edit_main_col')
