@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\BlogPost;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
 class BlogPostObserver
 {
@@ -27,6 +28,7 @@ class BlogPostObserver
     public function updating(BlogPost $blogPost)
     {
         $this->setPublishedAt($blogPost);
+        $this->setSlug($blogPost);
     }
 
     /**
@@ -81,11 +83,17 @@ class BlogPostObserver
     {
         if (empty($blogPost->published_at) && $blogPost->is_published) {
             $blogPost->published_at = Carbon::now();
-            return;
         }
+    }
 
-        if ((!empty($blogPost->published_at)) && (!$blogPost->is_published)) {
-            $blogPost->published_at = null;
+    /**
+     * @param BlogPost $blogPost
+     * @return void
+     */
+    protected function setSlug(BlogPost $blogPost)
+    {
+        if (empty($blogPost->slug)) {
+            $blogPost->slug = Str::slug($blogPost->title);
         }
     }
 }
