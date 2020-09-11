@@ -21,8 +21,16 @@ class CreateBlogCategoriesTable extends Migration
             $table->string('title');
             $table->text('description')->nullable();
 
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('blog_categories');
+
+            $table->index('published_at');
+
             $table->timestamps();
             $table->softDeletes();
+
+            //$table->foreign('category_id')->references('id')->on('blog_categories');
+
         });
     }
 
