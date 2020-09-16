@@ -3,6 +3,9 @@
 @section('content')
     <div class="container">
         <div class="col-md-12">
+
+            @include('blog.admin.posts.includes.result_messages')
+
             <nav class="navbar navbar-light bg-transparent">
                 <a class="btn btn-primary" href="{{ route('blog.admin.posts.create') }}">Написать</a>
             </nav>
