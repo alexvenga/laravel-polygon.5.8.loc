@@ -42,3 +42,8 @@ Route::group(['namespace' => 'Blog\Admin', 'prefix' => 'admin/blog'], function (
         ->names('blog.admin.posts');
 
 });
+
+Route::group(['prefix' => 'digging_deeper',], function () {
+    Route::get('collections', 'DiggingDeeperControleer@collections')
+        ->name('digging_deeper.collections');
+});
